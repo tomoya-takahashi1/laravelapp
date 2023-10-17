@@ -30,5 +30,10 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
-
+    
+    'rakuten' => [
+        'base_url' => 'https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706',
+        'api_key' => env('RAKUTEN_API_KEY'), // .envファイルから取得するAPIキー
+    ],
+    
 ];
