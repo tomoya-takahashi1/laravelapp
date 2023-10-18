@@ -13,7 +13,6 @@
                     <div class="product-details">
                         <h2 class="product-title">{{ $item['Item']['itemName'] }}</h2>
                         <p class="product-price">{{ $item['Item']['itemPrice'] }}円</p>
-                       <!-- <p class="product-description">{{ $item['Item']['itemCaption'] }}</p>-->
                         <a href="{{ $item['Item']['itemUrl'] }}" target="_blank">詳細を見る</a>
                     </div>
                 </div>
@@ -24,12 +23,11 @@
     @endif
 @endsection
 <style>
-  /* public/css/custom.css */
-
-.product-grid {
+ .product-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 20px; /* 商品間の間隔を設定 */
+    justify-content: space-between; /* 画面幅に合わせて横並びに */
 }
 
 .product-item {
@@ -37,6 +35,7 @@
     padding: 10px;
     border: 1px solid #ccc;
     text-align: center;
+    box-sizing: border-box; /* パディングとボーダーを要素の幅に含める */
 }
 
 .product-title {
@@ -51,4 +50,16 @@
     font-size: 12px; /* 商品説明のフォントサイズを調整 */
 }
 
+/* モバイルデバイスに対するスタイル */
+@media (max-width: 768px) {
+    .product-item {
+        width: calc(50% - 20px); /* 2列で表示 */
+    }
+}
+
+@media (max-width: 576px) {
+    .product-item {
+        width: 100%; /* 1列で表示 */
+    }
+}
 </style>

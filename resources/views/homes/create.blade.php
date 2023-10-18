@@ -4,7 +4,6 @@
   <div class="col-12 col-md-8">
     <div class="card shadow">
       <div class="card-body">
-      
         <div class="container text-center"> 
           <h1>トレーニング投稿</h1>
             @if ($errors->any())

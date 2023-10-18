@@ -128,12 +128,11 @@ class HomeController extends Controller
   {
     $keyword = $request->input('keyword');
       // モデルに対して検索クエリを実行
-      $homes = Home::where('title', 'LIKE', "%$keyword%")
-                    ->orWhere('body', 'LIKE', "%$keyword%")
-                    ->get(); 
-                    if ($homes->isEmpty()) {
-                        $homes = null; // または $homes = collect();
-                    }
+     
+    $homes = Home::where('title', 'LIKE', "%$keyword%")->get();              
+    if ($homes->isEmpty()) {
+      $homes = null; // または $homes = collect();
+    }
       return view('homes.index', compact('homes'));
     }
     

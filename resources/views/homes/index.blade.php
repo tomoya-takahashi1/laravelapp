@@ -23,48 +23,48 @@
     </form>
     @if (!is_null($homes))
     <table class="table">
-        <thead>
-            <tr>
-                <th>投稿者</th>
-                <th>種目</th>
-                <th>回数</th>
-                <th>詳細</th>
-                <th>いいね</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($homes as $home)
-            <tr>
-                <td>
-                    @if ($home->user)
-                        {{ $home->user->name }}
-                    @else
-                        投稿者なし
-                    @endif
-                </td>
-                <td>{{ $home->title }}</td>
-                <td>{{ $home->body }}</td>
-                <td>
-                    <a href="{{ route('homes.show', $home->id) }}" class="btn btn-info">詳細</a>
-                </td>
-                <td>
-                    @if (Auth::check())
-                    <span class="d-flex align-items-center">
-                        <span class="mr-2">いいね数: {{ $home->likes->count() }}</span>
-                        @if (!$home->likes->contains('user_id', auth()->id()))
-                            <form action="{{ route('like', $home->id) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-primary btn-sm">いいね</button>
-                            </form>
-                        @else
-                            <form action="{{ route('unlike', $home->id) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-danger btn-sm">いいね解除</button>
-                            </form>
-                        @endif
-                    </span>
-                    @endif
-                </td>
+      <thead>
+        <tr>
+          <th>投稿者</th>
+          <th>種目</th>
+          <th>回数</th>
+          <th>詳細</th>
+          <th>いいね</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($homes as $home)
+          <tr>
+            <td>
+              @if ($home->user)
+                {{ $home->user->name }}
+              @else
+                投稿者なし
+              @endif
+            </td>
+            <td>{{ $home->title }}</td>
+            <td>{{ $home->body }}</td>
+            <td>
+              <a href="{{ route('homes.show', $home->id) }}" class="btn btn-info">詳細</a>
+            </td>
+            <td>
+              @if (Auth::check())
+                <span class="d-flex align-items-center">
+                <span class="mr-2">いいね数: {{ $home->likes->count() }}</span>
+                  @if (!$home->likes->contains('user_id', auth()->id()))
+                    <form action="{{ route('like', $home->id) }}" method="POST">
+                      @csrf
+                      <button type="submit" class="btn btn-primary btn-sm">いいね</button>
+                    </form>
+                  @else
+                    <form action="{{ route('unlike', $home->id) }}" method="POST">
+                      @csrf
+                      <button type="submit" class="btn btn-danger btn-sm">いいね解除</button>
+                    </form>
+                  @endif
+                </span>
+              @endif
+            </td>
             </tr>
             @endforeach
         </tbody>
@@ -191,9 +191,5 @@
     </div>
   </div>
 </div>
-
-
-
-
 
 @endsection

@@ -27,13 +27,9 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-   
-    
-
-   
+  Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';
@@ -61,22 +57,13 @@ Route::get('/homes/edit/{id}', [HomeController::class, 'edit'])->name('homes.edi
 Route::delete('/homes/{id}', [HomeController::class, 'destroy'])->name('homes.destroy');
 Route::put('/homes/{id}', [HomeController::class, 'update'])->name('homes.update');
 
-
-
 Route::get('/homes/search', [HomeController::class, 'search'])->name('homes.search');
-
-
 
 
 Route::get('/change-password', [ChangePasswordController::class, 'showChangePasswordForm'])->name('change.password.form');
 
 
-
 Route::get('/search-products', [HomeController::class, 'searchProducts'])->name('homes.searchProducts');
-
-// routes/web.php
-
-
 
 use App\Http\Controllers\LikeController;
 
@@ -86,14 +73,7 @@ Route::post('/like/{homeId}', [LikeController::class, 'like'])->name('like');
 // いいね解除
 Route::post('/unlike/{homeId}', [LikeController::class, 'unlike'])->name('unlike');
 
-
-// routes/web.php
-
 use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/guest-login', [LoginController::class, 'guestLogin'])->name('guest.login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-    
-
-
